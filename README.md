@@ -25,10 +25,92 @@ npm i new-github-repository
 ```
 
 ```ts
-import { greet } from "new-github-repository";
+import { newGitHubRepository } from "new-github-repository";
 
-greet("Hello, world! 💖");
+await newGitHubRepository({
+	owner: "YourUsername",
+	repository: "a-great-new-repository",
+});
 ```
+
+`newGitHubRepository` returns an object containing:
+
+- `data`: response data from the GitHub OpenAPI REST call to create the repository
+- `initialized`: whether polling the GitHub API (see: [Why Polling?](#why-polling)) seemed to show the repository done being created
+
+`newGitHubRepository` allows the following properties in its parameter object:
+
+- Required:
+  - `owner` _(`string`)_: owning user or organization to create the repository under
+  - `repository` _(`string`)_: name of the repository to create
+- Optional:
+  - `octokit` _(`Octokit`)_: [Octokit](https://github.com/octokit/octokit.js#octokit-api-client) instance to use for requests
+  - `template` _(`{ owner, string }`)_: locator of a [GitHub template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) to create from
+
+### `octokit`
+
+[Octokit](https://github.com/octokit/octokit.js#octokit-api-client) instance to use for requests.
+If not provided, defaults to creating one with [`octokit-from-auth`](https://github.com/JoshuaKGoldberg/octokit-from-auth).
+
+Manually passing an `octokit` can be useful if you already have one created separately and/or wish to customize how the GitHub API is interacted with:
+
+```ts
+import { newGitHubRepository } from "new-github-repository";
+import { Octokit } from "octokit";
+
+const octokit = new Octokit({ auth: "personal-access-token123" });
+
+await newGitHubRepository({
+	octokit,
+	owner: "YourUsername",
+	repository: "a-great-new-repository",
+});
+```
+
+### `template`
+
+Locator of a [GitHub template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) to create from.
+
+Repositories created by a template repository show a _"generated from ..."_ notice in their homepage header that links to their template.
+
+```ts
+import { newGitHubRepository } from "new-github-repository";
+
+await newGitHubRepository({
+	owner: "YourUsername",
+	repository: "a-great-new-repository",
+	template: {
+		owner: "JoshuaKGoldberg",
+		repository: "create-typescript-app",
+	},
+});
+```
+
+## Why?
+
+> Or: why not create repositories by directly calling the GitHub API?
+
+`new-github-repository` smooths over two areas of GitHub repository creation:
+
+- There are three different APIs to create a new repository, depending on how it should be formed:
+  - [Creating from a template repository](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-using-a-template)
+  - [Creating a repository for the authenticated user](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user)
+  - [Creating an organization repository](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-an-organization-repository)
+- GitHub asynchronously initializes default repository metadata such as labels after the creation API call completes
+
+It also handles creating an authenticated Octokit for you with [`octokit-from-auth`](https://github.com/JoshuaKGoldberg/octokit-from-auth).
+
+### Why Polling?
+
+At time of writing, GitHub does not provide an API to determine whether a repository's asynchronous initialization is complete.
+Most noticeably, repository labels aren't created immediately, or even all at once.
+Labels are added in over several seconds after a repository is created.
+
+[Organization repositories may change default labels](https://docs.github.com/en/organizations/managing-organization-settings/managing-default-labels-for-repositories-in-your-organization) -including during repository creation- so it is not enough to check whether the number of repository labels matches an expected number.
+The only known way to determine whether labels have finished being populated seems to be to check whether they've stopped being added over multiple API calls.
+
+After creating a repository, `newGitHubRepository` continuously polls the [repository labels API](https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#list-labels-for-a-repository) up to an arbitrary 35 times.
+It waits until the number of labels is the same non-zero number three times in a row.
 
 ## Development
 
