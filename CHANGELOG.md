@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.0...0.2.1) (2025-03-07)
+
+### Bug Fixes
+
+- export from newGitHubRepository.js, not index.js ([4a483a3](https://github.com/JoshuaKGoldberg/new-github-repository/commit/4a483a3d26287706344c6f9cb306a319c4303641))
+
 # [0.2.0](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.1.0...0.2.0) (2025-03-07)
 
 ### Features

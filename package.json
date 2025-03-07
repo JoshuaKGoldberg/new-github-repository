@@ -1,6 +1,6 @@
 {
 	"name": "new-github-repository",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Creates a new repository on GitHub, including waiting for initialization. 🆕",
 	"repository": {
 		"type": "git",
