@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.1...0.2.2) (2025-04-04)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2 with transitions action ([#13](https://github.com/JoshuaKGoldberg/new-github-repository/issues/13)) ([e69f8c7](https://github.com/JoshuaKGoldberg/new-github-repository/commit/e69f8c7dfbe8aee30900fc68350c8cf3f08d959d)), closes [#12](https://github.com/JoshuaKGoldberg/new-github-repository/issues/12)
+
 ## [0.2.1](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.0...0.2.1) (2025-03-07)
 
 ### Bug Fixes
