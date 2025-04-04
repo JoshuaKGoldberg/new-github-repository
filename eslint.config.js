@@ -5,7 +5,7 @@ import jsdoc from "eslint-plugin-jsdoc";
 import jsonc from "eslint-plugin-jsonc";
 import markdown from "eslint-plugin-markdown";
 import n from "eslint-plugin-n";
-import packageJson from "eslint-plugin-package-json/configs/recommended";
+import packageJson from "eslint-plugin-package-json";
 import perfectionist from "eslint-plugin-perfectionist";
 import * as regexp from "eslint-plugin-regexp";
 import yml from "eslint-plugin-yml";
@@ -24,7 +24,7 @@ export default tseslint.config(
 	jsonc.configs["flat/recommended-with-json"],
 	markdown.configs.recommended,
 	n.configs["flat/recommended"],
-	packageJson,
+	packageJson.configs.recommended,
 	perfectionist.configs["recommended-natural"],
 	regexp.configs["flat/recommended"],
 	{
@@ -32,7 +32,7 @@ export default tseslint.config(
 			tseslint.configs.strictTypeChecked,
 			tseslint.configs.stylisticTypeChecked,
 		],
-		files: ["**/*.js", "**/*.ts"],
+		files: ["**/*.{js,ts}"],
 		languageOptions: {
 			parserOptions: {
 				projectService: { allowDefaultProject: ["*.config.*s"] },
@@ -60,6 +60,7 @@ export default tseslint.config(
 	{
 		extends: [tseslint.configs.disableTypeChecked],
 		files: ["**/*.md/*.ts"],
+		rules: { "n/no-missing-import": "off" },
 	},
 	{
 		extends: [vitest.configs.recommended],
