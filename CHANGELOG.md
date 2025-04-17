@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.3](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.2...0.2.3) (2025-04-17)
+
+### Bug Fixes
+
+- **deps:** update dependency @octokit/openapi-types to v25 ([#40](https://github.com/JoshuaKGoldberg/new-github-repository/issues/40)) ([d9d6972](https://github.com/JoshuaKGoldberg/new-github-repository/commit/d9d6972e74f019b21a29af1997d2971747e73c31))
+
 ## [0.2.2](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.1...0.2.2) (2025-04-04)
 
 ### Bug Fixes
