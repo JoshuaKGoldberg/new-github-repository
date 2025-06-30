@@ -36,7 +36,7 @@
 	},
 	"dependencies": {
 		"@octokit/openapi-types": "^25.0.0",
-		"octokit": "^4.1.2",
+		"octokit": "^5.0.0",
 		"octokit-from-auth": "^0.3.0"
 	},
 	"devDependencies": {
