@@ -70,6 +70,6 @@ export async function newGitHubRepository(
 
 	return {
 		data: response.data,
-		initialized: !!matchedLabelsLength,
+		initialized: matchedLabelsLength,
 	};
 }
