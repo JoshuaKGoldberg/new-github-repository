@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.4](/compare/0.2.3...0.2.4) (2025-12-02)
+
+### Bug Fixes
+
+- bump Octokit dependency from 4 to 5 (and others) (#242) b2d5288, closes #242
+
 ## [0.2.3](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.2...0.2.3) (2025-04-17)
 
 ### Bug Fixes
