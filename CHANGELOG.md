@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.4...0.2.5) (2026-09-20)
+
+### Bug Fixes
+
+- **deps:** update dependency @octokit/openapi-types to v28 ([#489](https://github.com/JoshuaKGoldberg/new-github-repository/issues/489)) ([7e438c9](https://github.com/JoshuaKGoldberg/new-github-repository/commit/7e438c9dc48c7d7fbeaf358a298ddf1ab0ebd10a)), closes [#8203](https://github.com/JoshuaKGoldberg/new-github-repository/issues/8203)
+- **deps:** update dependency @octokit/openapi-types to v29 ([#509](https://github.com/JoshuaKGoldberg/new-github-repository/issues/509)) ([62eb3e9](https://github.com/JoshuaKGoldberg/new-github-repository/commit/62eb3e974c5c98651b873c9838fb43caa7530b76)), closes [#8203](https://github.com/JoshuaKGoldberg/new-github-repository/issues/8203)
+
 ## [0.2.4](/compare/0.2.3...0.2.4) (2025-12-02)
 
 ### Bug Fixes
