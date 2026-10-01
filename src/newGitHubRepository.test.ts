@@ -35,7 +35,7 @@ const createMockOctokit = () =>
 		},
 	}) as unknown as Octokit;
 
-describe("newGitHubRepository", () => {
+describe(newGitHubRepository, () => {
 	it("creates using a template when one is provided", async () => {
 		mockRequest.mockResolvedValue({ data: [{}] });
 
