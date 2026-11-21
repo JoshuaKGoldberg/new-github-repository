@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.3.0](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.5...0.3.0) (2026-11-21)
+
+### Features
+
+- add private setting ([#593](https://github.com/JoshuaKGoldberg/new-github-repository/issues/593)) ([2725dd2](https://github.com/JoshuaKGoldberg/new-github-repository/commit/2725dd2a8df7c68686cc4b3638bbc5811dabf0c5)), closes [#594](https://github.com/JoshuaKGoldberg/new-github-repository/issues/594) [bingo-js/bingo#653](https://github.com/bingo-js/bingo/issues/653) [JoshuaKGoldberg/create-typescript-app#1618](https://github.com/JoshuaKGoldberg/create-typescript-app/issues/1618)
+
 ## [0.2.5](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.4...0.2.5) (2026-09-20)
 
 ### Bug Fixes
