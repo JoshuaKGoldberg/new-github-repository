@@ -45,6 +45,7 @@ await newGitHubRepository({
   - `repository` _(`string`)_: name of the repository to create
 - Optional:
   - `octokit` _(`Octokit`)_: [Octokit](https://github.com/octokit/octokit.js#octokit-api-client) instance to use for requests
+  - `private` _(`boolean`)_: whether to create the repository as private (default: `false`)
   - `template` _(`{ owner, string }`)_: locator of a [GitHub template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) to create from
 
 ### `octokit`
@@ -63,6 +64,21 @@ const octokit = new Octokit({ auth: "personal-access-token123" });
 await newGitHubRepository({
 	octokit,
 	owner: "YourUsername",
+	repository: "a-great-new-repository",
+});
+```
+
+### `private`
+
+Whether to create the repository as private instead of public.
+Defaults to `false`.
+
+```ts
+import { newGitHubRepository } from "new-github-repository";
+
+await newGitHubRepository({
+	owner: "YourUsername",
+	private: true,
 	repository: "a-great-new-repository",
 });
 ```

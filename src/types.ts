@@ -13,6 +13,12 @@ export interface NewGitHubRepositoryResult {
 
 export interface NewGitHubRepositorySettings extends RepositoryLocator {
 	octokit?: Octokit;
+
+	/**
+	 * Whether to create the repository as private (default: `false`).
+	 */
+	private?: boolean;
+
 	template?: RepositoryLocator;
 }
 
