@@ -110,6 +110,67 @@ describe("newGitHubRepository", () => {
 		expect(mockCreateUsingTemplate).not.toHaveBeenCalled();
 	});
 
+	it("creates a private repository using a template when private is true", async () => {
+		mockRequest.mockResolvedValue({ data: [{}] });
+
+		const template = {
+			owner: "JoshuaKGoldberg",
+			repository: "create-typescript-app",
+		};
+
+		await newGitHubRepository({
+			...locator,
+			octokit: createMockOctokit(),
+			private: true,
+			template,
+		});
+
+		expect(mockCreateUsingTemplate).toHaveBeenCalledWith({
+			name: locator.repository,
+			owner: locator.owner,
+			private: true,
+			template_owner: template.owner,
+			template_repo: template.repository,
+		});
+	});
+
+	it("creates a private repository under the user when private is true", async () => {
+		mockGetAuthenticated.mockResolvedValueOnce({
+			data: {
+				login: locator.owner,
+			},
+		});
+		mockRequest.mockResolvedValue({ data: [{}] });
+
+		await newGitHubRepository({
+			...locator,
+			octokit: createMockOctokit(),
+			private: true,
+		});
+
+		expect(mockCreateForAuthenticatedUser).toHaveBeenCalledWith({
+			name: locator.repository,
+			private: true,
+		});
+	});
+
+	it("creates a private repository under an org when private is true", async () => {
+		mockGetAuthenticated.mockResolvedValueOnce({ data: { login: "other" } });
+		mockRequest.mockResolvedValue({ data: [{}] });
+
+		await newGitHubRepository({
+			...locator,
+			octokit: createMockOctokit(),
+			private: true,
+		});
+
+		expect(mockCreateInOrg).toHaveBeenCalledWith({
+			name: locator.repository,
+			org: locator.owner,
+			private: true,
+		});
+	});
+
 	it("resolves only after labels have the same length thrice in a row when the repository does not have labels for fewer than 35 calls", async () => {
 		mockGetAuthenticated.mockResolvedValueOnce({ data: {} });
 		mockRequest

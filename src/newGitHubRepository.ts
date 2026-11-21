@@ -8,13 +8,19 @@ import {
 export async function newGitHubRepository(
 	settings: NewGitHubRepositorySettings,
 ): Promise<NewGitHubRepositoryResult> {
-	const { octokit = await octokitFromAuth(), template, ...locator } = settings;
+	const {
+		octokit = await octokitFromAuth(),
+		private: isPrivate,
+		template,
+		...locator
+	} = settings;
 	let response;
 
 	if (template) {
 		response = await octokit.rest.repos.createUsingTemplate({
 			name: locator.repository,
 			owner: locator.owner,
+			private: isPrivate,
 			template_owner: template.owner,
 			template_repo: template.repository,
 		});
@@ -24,11 +30,13 @@ export async function newGitHubRepository(
 		if (currentUser.data.login === locator.owner) {
 			response = await octokit.rest.repos.createForAuthenticatedUser({
 				name: locator.repository,
+				private: isPrivate,
 			});
 		} else {
 			response = await octokit.rest.repos.createInOrg({
 				name: locator.repository,
 				org: locator.owner,
+				private: isPrivate,
 			});
 		}
 	}
