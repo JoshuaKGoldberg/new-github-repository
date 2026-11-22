@@ -1,2 +1,2 @@
-export * from "./newGitHubRepository.js";
-export type * from "./types.js";
+export * from "./newGitHubRepository.ts";
+export type * from "./types.ts";
