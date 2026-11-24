@@ -1,7 +1,7 @@
 import { Octokit } from "octokit";
 import { describe, expect, it, vi } from "vitest";
 
-import { newGitHubRepository } from "./newGitHubRepository.js";
+import { newGitHubRepository } from "./newGitHubRepository.ts";
 
 const locator = { owner: "StubOwner", repository: "stub-repository" };
 
@@ -35,7 +35,7 @@ const createMockOctokit = () =>
 		},
 	}) as unknown as Octokit;
 
-describe("newGitHubRepository", () => {
+describe(newGitHubRepository, () => {
 	it("creates using a template when one is provided", async () => {
 		mockRequest.mockResolvedValue({ data: [{}] });
 

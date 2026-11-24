@@ -3,7 +3,7 @@ import { octokitFromAuth } from "octokit-from-auth";
 import {
 	NewGitHubRepositoryResult,
 	NewGitHubRepositorySettings,
-} from "./types.js";
+} from "./types.ts";
 
 export async function newGitHubRepository(
 	settings: NewGitHubRepositorySettings,

@@ -9,13 +9,18 @@ import { blockESLint, createConfig } from "create-typescript-app";
 
 export default createConfig({
 	refinements: {
-		addons: [
+		extensions: [
 			blockESLint({
-				rules: [
+				extensions: [
 					{
-						entries: {
-							"n/no-missing-import": "off",
-						},
+						files: ["**/*.{js,ts}"],
+						rules: [
+							{
+								entries: {
+									"n/no-missing-import": "off",
+								},
+							},
+						],
 					},
 				],
 			}),
