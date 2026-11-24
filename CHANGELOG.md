@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.3.0...0.3.1) (2026-11-24)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2.87.18 ([#597](https://github.com/JoshuaKGoldberg/new-github-repository/issues/597)) ([b588b8a](https://github.com/JoshuaKGoldberg/new-github-repository/commit/b588b8a2dae4ca9240dbaedd742624b484a18bd5)), closes [#596](https://github.com/JoshuaKGoldberg/new-github-repository/issues/596)
+
 ## [0.3.0](https://github.com/JoshuaKGoldberg/new-github-repository/compare/0.2.5...0.3.0) (2026-11-21)
 
 ### Features
